@@ -1,6 +1,6 @@
 Summary:       OpenShift Tools Scripts
 Name:          openshift-tools-scripts
-Version:       0.1.72
+Version:       0.1.74
 Release:       1%{?dist}
 License:       ASL 2.0
 URL:           https://github.com/openshift/openshift-tools
@@ -85,6 +85,7 @@ cp -p monitoring/ops-ec2-check-tags.py %{buildroot}/usr/bin/ops-ec2-check-tags
 cp -p monitoring/ops-gcp-check-tags.py %{buildroot}/usr/bin/ops-gcp-check-tags
 cp -p monitoring/cron-send-zabbix-too-old.py %{buildroot}/usr/bin/cron-send-zabbix-too-old
 cp -p cicd/verify-cicd-operation.py %{buildroot}/usr/bin/verify-cicd-operation.py
+cp -p cicd/verify-gather-logs-operations.py %{buildroot}/usr/bin/verify-gather-logs-operations.py
 cp -p monitoring/cron-send-prometheus-data.py %{buildroot}/usr/bin/cron-send-prometheus-data
 cp -p monitoring/cron-send-dnsmasq-check.py %{buildroot}/usr/bin/cron-send-dnsmasq-check
 cp -p devaccess/devaccess_wrap.py %{buildroot}/usr/bin/devaccess_wrap
@@ -431,8 +432,19 @@ OpenShift Tools cicd scripts
 
 %files cicd
 /usr/bin/verify-cicd-operation.py
+/usr/bin/verify-gather-logs-operations.py
 
 %changelog
+* Tue Jul 11 2017 Pep Turró <pep@redhat.com> 0.1.74-1
+- added the second time metrics check if the first time check failed
+  (zhiwliu@redhat.com)
+- Package log gathering wrapper script (pep@redhat.com)
+
+* Mon Jul 10 2017 Joel Diaz <jdiaz@redhat.com> 0.1.73-1
+- use more valid-looking example output for rpm -qa (jdiaz@redhat.com)
+- allow users to be defined who have no specific role assigned
+  (jdiaz@redhat.com)
+
 * Wed Jul 05 2017 Zhiming Zhang <zhizhang@redhat.com> 0.1.72-1
 - change the role path for docker high usage (zhizhang@zhizhang-laptop-
   nay.redhat.com)
