@@ -15,20 +15,3 @@
     section: Global
     option: Zone
     value: "{{ openshift.provider.zone }}"
-
-- name: Configure KubernetesClusterTag (3.5)
-  ini_file:
-    dest: "{{ openshift.common.config_base }}/cloudprovider/aws.conf"
-    section: Global
-    option: KubernetesClusterTag
-    value: "{{ openshift_cluster_id }}"
-  when: "{{ openshift.common.version }}" == "3.5"
-
-- name: Configure KubernetesClusterID (when NOT 3.5)
-  ini_file:
-    dest: "{{ openshift.common.config_base }}/cloudprovider/aws.conf"
-    section: Global
-    option: KubernetesClusterID
-    value: "{{ openshift_cluster_id }}"
-  when: "{{ openshift.common.version }}" != "3.5"
-
